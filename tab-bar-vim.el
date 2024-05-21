@@ -38,7 +38,7 @@
   :group 'tab-bar-vim)
 
 (defvar tab-bar-vim--after-load-theme-hook nil
-  "Hook run after a color theme is loaded using `load-theme'.")
+  "Hook run after a theme is loaded using `load-theme' to update the tab-bar faces.")
 
 (defun tab-bar-vim--name-format-function (tab i)
   "Format a TAB name of the tab index I like Vim."
@@ -129,8 +129,8 @@ the current group."
 
   (tab-bar-mode 1))
 
-(defun tab-bar-vim--after-load-theme-hook (&rest _args)
-  "Run `tab-bar-vim--after-load-theme-hook'."
+(defun tab-bar-vim--run-after-load-theme-hook (&rest _args)
+  "Run the hooks that are in the variable `tab-bar-vim--after-load-theme-hook'."
   (run-hooks 'tab-bar-vim--after-load-theme-hook))
 
 ;;;###autoload
@@ -141,10 +141,10 @@ the current group."
   :group 'tab-bar-vim
   (if tab-bar-vim-mode
       (progn
-        (advice-add 'load-theme :after #'tab-bar-vim--after-load-theme-hook)
+        (advice-add 'load-theme :after #'tab-bar-vim--run-after-load-theme-hook)
         (tab-bar-vim--apply)
         (add-hook 'tab-bar-vim--after-load-theme-hook 'tab-bar-vim--apply))
-    (advice-remove 'load-theme #'tab-bar-vim--after-load-theme-hook)))
+    (advice-remove 'load-theme #'tab-bar-vim--run-after-load-theme-hook)))
 
 (provide 'tab-bar-vim)
 ;;; tab-bar-vim.el ends here
