@@ -1,11 +1,11 @@
-# vim-like-tab-bar.el
+# vim-tab-bar.el
 
 ## Overview
 
-The `vim-like-tab-bar.el` Emacs package makes `tab-bar` look in a manner reminiscent of Vim's tabbed browsing interface. It also makes sure that the `tab-bar` appearance remains consistent with the overall color scheme of the current theme.
+The `vim-tab-bar.el` Emacs package makes `tab-bar` look in a manner reminiscent of Vim's tabbed browsing interface. It also makes sure that the `tab-bar` appearance remains consistent with the overall color scheme of the current theme.
 
-This is how the Emacs `vim-like-tab-bar.el` package makes the `tab-bar` appear:
-![](https://raw.githubusercontent.com/jamescherti/vim-like-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
+This is how the Emacs `vim-tab-bar.el` package makes the `tab-bar` appear:
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
 The Emacs built-in `tab-bar` feature, which enables users to manage multiple buffers through a visual interface at the top of the Emacs window, is available in Emacs version 27.1 or higher.
 
@@ -17,30 +17,30 @@ The Emacs built-in `tab-bar` feature, which enables users to manage multiple buf
 
 ## Installation
 
-1. Clone the `vim-like-tab-bar` repository to your local machine and add it to your `load-path`.
+1. Clone the `vim-tab-bar` repository to your local machine and add it to your `load-path`.
 2. Add the following lines to your Emacs configuration:
 
 ```emacs-lisp
-(require 'vim-like-tab-bar)
-(vim-like-tab-bar-mode 1)
+(require 'vim-tab-bar)
+(vim-tab-bar-mode 1)
 ```
 
 ## Options
 
-Customize `vim-like-tab-bar` by setting the following options in your Emacs configuration to suit your preferences:
+Customize `vim-tab-bar` by setting the following options in your Emacs configuration to suit your preferences:
 ``` emacs-lisp
-;; vim-like-tab-bar-show-groups: Determines whether tab groups are displayed.
+;; vim-tab-bar-show-groups: Determines whether tab groups are displayed.
 ;; Default is nil (groups not displayed).
-(setq vim-like-tab-bar-show-groups nil)
+(setq vim-tab-bar-show-groups nil)
 ```
 
 ## Screenshots
 
-![](https://raw.githubusercontent.com/jamescherti/vim-like-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tomorrow-night-deepblue.png)
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tomorrow-night-deepblue.png)
 
-![](https://raw.githubusercontent.com/jamescherti/vim-like-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tango-dark.png)
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tango-dark.png)
 
-![](https://raw.githubusercontent.com/jamescherti/vim-like-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
 ## License
 
@@ -54,4 +54,4 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Related links
 
-- [Article: Making the Emacs built-in tab-bar Look Like Vim’s Tab Bar](https://www.jamescherti.com/emacs-vim-like-tab-bar-style-colors/)
+- [Article: Making the Emacs built-in tab-bar Look Like Vim’s Tab Bar](https://www.jamescherti.com/emacs-vim-tab-bar-style-colors/)

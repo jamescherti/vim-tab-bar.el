@@ -1,10 +1,10 @@
-;;; vim-like-tab-bar.el --- Make the Emacs tab-bar Look Like Vim’s Tab Bar  -*- lexical-binding: t; -*-
+;;; vim-tab-bar.el --- Make the Emacs tab-bar Look Like Vim’s Tab Bar  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024 James Cherti
 
 ;; Author: James Cherti
 ;; Version: 1.0.0
-;; URL: https://github.com/jamescherti/vim-like-tab-bar.el
+;; URL: https://github.com/jamescherti/vim-tab-bar.el
 ;; Keywords: tab-bar
 ;; Package-Requires: ((emacs "27.1"))
 
@@ -22,25 +22,25 @@
 ;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; vim-like-tab-bar provides a Vim-like tab bar.
+;; vim-tab-bar provides a Vim-like tab bar.
 
 ;;; Code:
 
 (require 'tab-bar)
 
-(defgroup vim-like-tab-bar nil
-  "Non-nil if vim-like-tab-bar mode mode is enabled."
-  :group 'vim-like-tab-bar)
+(defgroup vim-tab-bar nil
+  "Non-nil if vim-tab-bar mode mode is enabled."
+  :group 'vim-tab-bar)
 
-(defcustom vim-like-tab-bar-show-groups nil
+(defcustom vim-tab-bar-show-groups nil
   "Show groups in the tab-bar."
   :type 'boolean
-  :group 'vim-like-tab-bar)
+  :group 'vim-tab-bar)
 
-(defvar vim-like-tab-bar--after-load-theme-hook nil
+(defvar vim-tab-bar--after-load-theme-hook nil
   "Hook run after a theme is loaded using `load-theme' to update the tab-bar faces.")
 
-(defun vim-like-tab-bar--name-format-function (tab i)
+(defun vim-tab-bar--name-format-function (tab i)
   "Format a TAB name of the tab index I like Vim."
   (let ((current-p (eq (car tab) 'current-tab)))
     (propertize
@@ -55,7 +55,7 @@
              " ")
      'face (funcall tab-bar-tab-face-function tab))))
 
-(defun vim-like-tab-bar--group-format-function (tab i &optional current-p)
+(defun vim-tab-bar--group-format-function (tab i &optional current-p)
   "Format a TAB group like Vim.
 This function spaces around the group name. Index I is included when
 `tab-bar-tab-hints' is enabled and CURRENT-P is nil, indicating the tab is not
@@ -67,7 +67,7 @@ the current group."
            " ")
    'face (if current-p 'tab-bar-tab-group-current 'tab-bar-tab-group-inactive)))
 
-(defun vim-like-tab-bar--apply ()
+(defun vim-tab-bar--apply ()
   "Apply Vim-like color themes to Emacs tab bars."
   (let* ((color-fallback-light (face-attribute 'default :foreground))
          (fallback-color-dark (face-attribute 'default :background))
@@ -83,9 +83,9 @@ the current group."
          (fg-tab-inactive fg-modeline-inactive)
          (fg-tab-active fg-default)
          (bg-tab-active bg-default))
-    (setq tab-bar-tab-name-format-function #'vim-like-tab-bar--name-format-function)
-    (setq tab-bar-tab-group-format-function #'vim-like-tab-bar--group-format-function)
-    (if vim-like-tab-bar-show-groups
+    (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
+    (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
+    (if vim-tab-bar-show-groups
         (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
       (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
     (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
@@ -129,22 +129,22 @@ the current group."
 
   (tab-bar-mode 1))
 
-(defun vim-like-tab-bar--run-after-load-theme-hook (&rest _args)
-  "Run the hooks that are in the variable `vim-like-tab-bar--after-load-theme-hook'."
-  (run-hooks 'vim-like-tab-bar--after-load-theme-hook))
+(defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
+  "Run the hooks that are in the variable `vim-tab-bar--after-load-theme-hook'."
+  (run-hooks 'vim-tab-bar--after-load-theme-hook))
 
 ;;;###autoload
-(define-minor-mode vim-like-tab-bar-mode
-  "Toggle `vim-like-tab-bar-mode'."
+(define-minor-mode vim-tab-bar-mode
+  "Toggle `vim-tab-bar-mode'."
   :global t
   :lighter " TB-Vim"
-  :group 'vim-like-tab-bar
-  (if vim-like-tab-bar-mode
+  :group 'vim-tab-bar
+  (if vim-tab-bar-mode
       (progn
-        (advice-add 'load-theme :after #'vim-like-tab-bar--run-after-load-theme-hook)
-        (vim-like-tab-bar--apply)
-        (add-hook 'vim-like-tab-bar--after-load-theme-hook 'vim-like-tab-bar--apply))
-    (advice-remove 'load-theme #'vim-like-tab-bar--run-after-load-theme-hook)))
+        (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
+        (vim-tab-bar--apply)
+        (add-hook 'vim-tab-bar--after-load-theme-hook 'vim-tab-bar--apply))
+    (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)))
 
-(provide 'vim-like-tab-bar)
-;;; vim-like-tab-bar.el ends here
+(provide 'vim-tab-bar)
+;;; vim-tab-bar.el ends here
