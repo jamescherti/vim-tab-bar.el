@@ -54,4 +54,4 @@ You should have received a copy of the GNU General Public License along with thi
 
 ## Related links
 
-- [Article: Making the Emacs built-in tab-bar Look Like Vim’s Tab Bar](https://www.jamescherti.com/emacs-vim-tab-bar-style-colors/)
+- [Article: Making the Emacs built-in tab-bar Look Like Vim’s Tab Bar](https://www.jamescherti.com/emacs-tab-bar-vim-style-colors/)
