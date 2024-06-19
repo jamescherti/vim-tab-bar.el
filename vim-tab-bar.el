@@ -80,6 +80,11 @@ the current group."
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 
+;; (defun vim-tab-bar--reset-face-attributes (face)
+;;   "Reset some attributes of FACE to their default."
+;;   (dolist (attr '(:inverse-video :height :inherit))
+;;     (set-face-attribute face nil attr 'unspecified)))
+
 (defun vim-tab-bar--apply ()
   "Apply Vim-like color themes to Emacs tab bars."
   (let* ((color-fallback-light (face-attribute 'default :foreground))
@@ -111,33 +116,38 @@ the current group."
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
     (custom-set-faces
      ;; The tab bar's appearance
      `(tab-bar
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
                         :height unspecified
+                        :inherit unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
      ;; Inactive tabs
      `(tab-bar-tab-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
                         :height unspecified
+                        :inherit unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
-
      ;; Active tab
      `(tab-bar-tab
        ((t (:background ,bg-tab-active
                         :foreground ,fg-tab-active
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
                         :height unspecified
+                        :inherit unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-active :style nil)))))
 
@@ -145,9 +155,9 @@ the current group."
      `(tab-bar-tab-ungrouped
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
                         :height unspecified
+                        :inherit unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
@@ -155,9 +165,9 @@ the current group."
      `(tab-bar-tab-group-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
                         :height unspecified
+                        :inherit unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
@@ -165,8 +175,9 @@ the current group."
      `(tab-bar-tab-group-current
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-active
-                        :inverse-video nil
-                        :inherit nil
+                        :inverse-video unspecified
+                        :height unspecified
+                        :inherit unspecified
                         :box (:line-width 3
                                           :color ,bg-tab-inactive
                                           :style nil)))))))
