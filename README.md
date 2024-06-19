@@ -1,8 +1,11 @@
 # vim-tab-bar.el
 
+## Overview
+
+The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme.
+
 ## Table of Contents
 
-- [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
 - [Options](#options)
@@ -10,20 +13,12 @@
 - [License](#license)
 - [Links](#links)
 
-## Overview
-
-The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme.
-
-This is how the Emacs `vim-tab-bar.el` package makes the `tab-bar` appear:
-![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
-
-The Emacs built-in `tab-bar` feature, which enables users to manage multiple buffers through a visual interface at the top of the Emacs window, is available in Emacs version 27.1 or higher.
-
 ## Features
 
-- Vim-like tab bar: Makes the Emacs `tab-bar` look in a manner reminiscent of Vim's tabbed browsing interface.
 - Theme Compatibility: Automatically applies Vim-like color themes to tab bars, responding dynamically to theme changes in Emacs.
 - Group Formatting: Optionally display and format tab groups.
+- Makes the Emacs `tab-bar` (Emacs version >= 27.1) look in a manner reminiscent of Vim's tabbed browsing interface:
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
 ## Installation
 
