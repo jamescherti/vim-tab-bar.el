@@ -20,6 +20,7 @@ The Emacs built-in `tab-bar` feature, which enables users to manage multiple buf
 The `vim-tab-bar` package can be installed from MELPA by adding the following to your init.el:
 ```emacs-lisp
 (use-package vim-tab-bar
+  :ensure t
   :config
   (add-hook 'after-init-hook #'vim-tab-bar-mode))
 ```
