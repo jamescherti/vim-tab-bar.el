@@ -1,18 +1,14 @@
 # vim-tab-bar.el
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+## Table of Contents
 
-- [vim-tab-bar.el](#vim-tab-barel)
-    - [Overview](#overview)
-    - [Features](#features)
-    - [Installation](#installation)
-    - [Options](#options)
-    - [Screenshots](#screenshots)
-    - [License](#license)
-    - [Links](#links)
-
-<!-- markdown-toc end -->
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Options](#options)
+- [Screenshots](#screenshots)
+- [License](#license)
+- [Links](#links)
 
 ## Overview
 
