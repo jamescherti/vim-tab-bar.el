@@ -1,5 +1,19 @@
 # vim-tab-bar.el
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [vim-tab-bar.el](#vim-tab-barel)
+    - [Overview](#overview)
+    - [Features](#features)
+    - [Installation](#installation)
+    - [Options](#options)
+    - [Screenshots](#screenshots)
+    - [License](#license)
+    - [Links](#links)
+
+<!-- markdown-toc end -->
+
 ## Overview
 
 The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme.
