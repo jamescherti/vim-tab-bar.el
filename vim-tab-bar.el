@@ -40,7 +40,9 @@
 
 (defgroup vim-tab-bar nil
   "Non-nil if vim-tab-bar mode mode is enabled."
-  :group 'vim-tab-bar)
+  :group 'vim-tab-bar
+  :prefix "vim-tab-bar-"
+  :link '(url-link "https://github.com/jamescherti/vim-tab-bar.el"))
 
 (defcustom vim-tab-bar-show-groups nil
   "Show groups in the tab-bar."
