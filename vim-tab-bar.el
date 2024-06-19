@@ -3,7 +3,7 @@
 ;; Copyright (C) 2024 James Cherti
 
 ;; Author: James Cherti
-;; Version: 1.0.2
+;; Version: 1.0.3
 ;; URL: https://github.com/jamescherti/vim-tab-bar.el
 ;; Keywords: frames
 ;; Package-Requires: ((emacs "28.1"))
