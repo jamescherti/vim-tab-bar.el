@@ -116,17 +116,28 @@ the current group."
      `(tab-bar
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
+                        :inverse-video nil
+                        :inherit nil
+                        :height unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
      ;; Inactive tabs
      `(tab-bar-tab-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
+                        :inverse-video nil
+                        :inherit nil
+                        :height unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
+
      ;; Active tab
      `(tab-bar-tab
-       ((t (:background ,bg-tab-active :foreground ,fg-tab-active
+       ((t (:background ,bg-tab-active
+                        :foreground ,fg-tab-active
+                        :inverse-video nil
+                        :inherit nil
+                        :height unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-active :style nil)))))
 
@@ -134,6 +145,9 @@ the current group."
      `(tab-bar-tab-ungrouped
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
+                        :inverse-video nil
+                        :inherit nil
+                        :height unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
@@ -141,12 +155,18 @@ the current group."
      `(tab-bar-tab-group-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
+                        :inverse-video nil
+                        :inherit nil
+                        :height unspecified
                         :box
                         (:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
      ;; Active tab
      `(tab-bar-tab-group-current
-       ((t (:background ,bg-tab-inactive :foreground ,fg-tab-active
+       ((t (:background ,bg-tab-inactive
+                        :foreground ,fg-tab-active
+                        :inverse-video nil
+                        :inherit nil
                         :box (:line-width 3
                                           :color ,bg-tab-inactive
                                           :style nil)))))))
