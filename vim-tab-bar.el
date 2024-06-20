@@ -80,10 +80,12 @@ the current group."
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 
-;; (defun vim-tab-bar--reset-face-attributes (face)
-;;   "Reset some attributes of FACE to their default."
-;;   (dolist (attr '(:inverse-video :height :inherit))
-;;     (set-face-attribute face nil attr 'unspecified)))
+(defun vim-tab-bar--reset-face-attributes (face)
+  "Set all attributes of the specified FACE to `unspecified'."
+  (when (facep face)
+    (let ((attributes (face-all-attributes face)))
+      (dolist (attr attributes)
+        (set-face-attribute face nil (car attr) 'unspecified)))))
 
 (defun vim-tab-bar--apply ()
   "Apply Vim-like color themes to Emacs tab bars."
@@ -116,12 +118,12 @@ the current group."
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
+    (vim-tab-bar--reset-face-attributes 'tab-bar)
+    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
+    (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
+    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
+    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
+    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
     (custom-set-faces
      ;; The tab bar's appearance
      `(tab-bar
