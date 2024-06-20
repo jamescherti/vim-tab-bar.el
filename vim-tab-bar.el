@@ -194,7 +194,7 @@ the current group."
 (define-minor-mode vim-tab-bar-mode
   "Toggle `vim-tab-bar-mode'."
   :global t
-  :lighter " TB-Vim"
+  :lighter " VimTB"
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
