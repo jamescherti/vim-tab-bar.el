@@ -131,27 +131,21 @@ the current group."
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box
-                        (:line-width 3 :color ,bg-tab-inactive :style nil)))))
+                        :inherit unspecified))))
      ;; Inactive tabs
      `(tab-bar-tab-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box
-                        (:line-width 3 :color ,bg-tab-inactive :style nil)))))
+                        :inherit unspecified))))
      ;; Active tab
      `(tab-bar-tab
        ((t (:background ,bg-tab-active
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box
-                        (:line-width 3 :color ,bg-tab-active :style nil)))))
+                        :inherit unspecified))))
 
      ;; The tab bar's appearance
      `(tab-bar-tab-ungrouped
@@ -159,9 +153,7 @@ the current group."
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box
-                        (:line-width 3 :color ,bg-tab-inactive :style nil)))))
+                        :inherit unspecified))))
 
      ;; Inactive tabs
      `(tab-bar-tab-group-inactive
@@ -169,9 +161,7 @@ the current group."
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box
-                        (:line-width 3 :color ,bg-tab-inactive :style nil)))))
+                        :inherit unspecified))))
 
      ;; Active tab
      `(tab-bar-tab-group-current
@@ -179,16 +169,38 @@ the current group."
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified
-                        :box (:line-width 3
-                                          :color ,bg-tab-inactive
-                                          :style nil)))))))
+                        :inherit unspecified)))))
 
-  (tab-bar-mode 1))
+    (unless (daemonp)
+      (set-face-attribute
+       'tab-bar nil
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+      (set-face-attribute
+       'tab-bar-tab-inactive nil
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+      (set-face-attribute
+       'tab-bar-tab nil
+       :box `(:line-width 3 :color ,bg-tab-active :style nil))
+      (set-face-attribute
+       'tab-bar-tab-ungrouped nil
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+      (set-face-attribute
+       'tab-bar-tab-group-inactive nil
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+      (set-face-attribute
+       'tab-bar-tab-group-current nil
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))
+
+    (tab-bar-mode 1)))
 
 (defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
   "Run the hooks that are in `vim-tab-bar--after-load-theme-hook'."
   (run-hooks 'vim-tab-bar--after-load-theme-hook))
+
+(defun vim-tab-bar--apply-vim-tab-bar-frame (frame)
+  "Apply `vim-tab-bar--apply` settings to the given FRAME."
+  (with-selected-frame frame
+    (vim-tab-bar--apply)))
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
@@ -201,7 +213,11 @@ the current group."
         (advice-add 'load-theme :after
                     #'vim-tab-bar--run-after-load-theme-hook)
         (vim-tab-bar--apply)
+        (add-hook 'after-make-frame-functions
+                  #'vim-tab-bar--apply-vim-tab-bar-frame)
         (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply))
+    (remove-hook 'after-make-frame-functions
+                 #'vim-tab-bar--apply-vim-tab-bar-frame)
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)))
 
 (provide 'vim-tab-bar)
