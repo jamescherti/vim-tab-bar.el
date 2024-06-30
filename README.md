@@ -42,7 +42,7 @@ Customize `vim-tab-bar` by setting the following options in your Emacs configura
 
 ## Screenshots
 
-The screenshot below shows how the Emacs `vim-tab-bar.el` package makes the `tab-bar` appear:
+The screenshots below shows how the Emacs `vim-tab-bar.el` package makes the `tab-bar` appear:
 
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tomorrow-night-deepblue.png)
 
