@@ -14,7 +14,7 @@ The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style
 
 ## Features
 
-- The `vim-tab-bar.el` package ensures that tabs maintain a uniform appearance regardless of the theme used. This is beneficial those who use themes that do not configure the tab-bar properly.
+- The `vim-tab-bar.el` package ensures that tabs maintain a uniform appearance regardless of the theme used. This is also beneficial those who use themes that do not configure the tab-bar properly.
 - Group Formatting: Optionally display and format tab groups.
 - Makes the Emacs `tab-bar` (Emacs version >= 27.1) look in a manner reminiscent of Vim's tabbed browsing interface:
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
