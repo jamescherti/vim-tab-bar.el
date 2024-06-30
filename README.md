@@ -3,6 +3,8 @@
 
 The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme.
 
+The `vim-tab-bar.el` Emacs package is also useful for those who use themes that do not configure the tab bar properly, which can make your Emacs tabs look inconsistent. The package ensures that tabs maintain a uniform appearance regardless of the theme used.
+
 ## Table of Contents
 
 - [Features](#features)
