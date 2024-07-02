@@ -49,6 +49,28 @@
   :type 'boolean
   :group 'vim-tab-bar)
 
+(defun vim-tab-bar--default-format-tab-name (name)
+  "Return NAME surrounded by spaces."
+  (concat " " name " "))
+
+(defun vim-tab-bar--default-format-group-name (name)
+  "Return NAME surrounded by spaces."
+  (concat " " name " "))
+
+(defcustom vim-tab-bar-update-tab-name-function
+  #'vim-tab-bar--default-format-tab-name
+  "Function to format the name of a tab.
+The function should take a string as its sole argument and return a string."
+  :type 'function
+  :group 'vim-tab-bar)
+
+(defcustom vim-tab-bar-update-group-name-function
+  #'vim-tab-bar--default-format-group-name
+  "Function to format the name of a tab group.
+The function should take a string as its sole argument and return a string."
+  :type 'function
+  :group 'vim-tab-bar)
+
 (defvar vim-tab-bar--after-load-theme-hook nil
   "Hook run after `load-theme' to update the tab-bar faces.")
 
@@ -56,15 +78,15 @@
   "Format a TAB name of the tab index I like Vim."
   (let ((current-p (eq (car tab) 'current-tab)))
     (propertize
-     (concat " "
-             (if tab-bar-tab-hints (format "%d " i) "")
-             (alist-get 'name tab)
-             (or (and tab-bar-close-button-show
-                      (not (eq tab-bar-close-button-show
-                               (if current-p 'non-selected 'selected)))
-                      tab-bar-close-button)
-                 "")
-             " ")
+     (funcall vim-tab-bar-update-tab-name-function
+              (concat
+               (if tab-bar-tab-hints (format "%d " i) "")
+               (alist-get 'name tab)
+               (or (and tab-bar-close-button-show
+                        (not (eq tab-bar-close-button-show
+                                 (if current-p 'non-selected 'selected)))
+                        tab-bar-close-button)
+                   "")))
      'face (funcall tab-bar-tab-face-function tab))))
 
 (defun vim-tab-bar--group-format-function (tab i &optional current-p)
@@ -73,10 +95,12 @@ This function spaces around the group name. Index I is included when
 `tab-bar-tab-hints' is enabled and CURRENT-P is nil, indicating the tab is not
 the current group."
   (propertize
-   (concat " "
-           (if (and tab-bar-tab-hints (not current-p)) (format "%d " i) "")
-           (funcall tab-bar-tab-group-function tab)
-           " ")
+   (funcall vim-tab-bar-update-group-name-function
+            (concat
+             (if (and tab-bar-tab-hints (not current-p))
+                 (format "%d " i)
+               "")
+             (funcall tab-bar-tab-group-function tab)))
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 

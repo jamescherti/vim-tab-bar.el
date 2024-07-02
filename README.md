@@ -33,12 +33,14 @@ The `vim-tab-bar` package can be installed from MELPA by adding the following to
 
 ## Options
 
-Customize `vim-tab-bar` by setting the following options in your Emacs configuration to suit your preferences:
+### Show the tab groups
+
+By default, tab groups are not displayed. You can make `tab-bar-vim` display them by setting the variable:
 ``` emacs-lisp
-;; vim-tab-bar-show-groups: Determines whether tab groups are displayed.
-;; Default is nil (groups not displayed).
-(setq vim-tab-bar-show-groups nil)
+(setq vim-tab-bar-show-groups t)
 ```
+
+###
 
 ## Screenshots
 
