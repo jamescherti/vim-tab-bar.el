@@ -142,12 +142,13 @@ the current group."
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
-    (vim-tab-bar--reset-face-attributes 'tab-bar)
-    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
-    (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
-    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
-    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
-    (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
+    ;; Make this work with Arch Linux Emacs
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
+    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
     (custom-set-faces
      ;; The tab bar's appearance
      `(tab-bar
@@ -213,9 +214,7 @@ the current group."
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
       (set-face-attribute
        'tab-bar-tab-group-current nil
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))
-
-    (tab-bar-mode 1)))
+       :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
 (defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
   "Run the hooks that are in `vim-tab-bar--after-load-theme-hook'."
@@ -237,9 +236,11 @@ the current group."
         (advice-add 'load-theme :after
                     #'vim-tab-bar--run-after-load-theme-hook)
         (vim-tab-bar--apply)
+        ;; Hooks
         (add-hook 'after-make-frame-functions
                   #'vim-tab-bar--apply-vim-tab-bar-frame)
-        (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply))
+        (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
+        (tab-bar-mode 1))
     (remove-hook 'after-make-frame-functions
                  #'vim-tab-bar--apply-vim-tab-bar-frame)
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)))
