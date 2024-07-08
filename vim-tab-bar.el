@@ -104,13 +104,6 @@ the current group."
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 
-(defun vim-tab-bar--reset-face-attributes (face)
-  "Set all attributes of the specified FACE to `unspecified'."
-  (when (facep face)
-    (let ((attributes (face-all-attributes face)))
-      (dolist (attr attributes)
-        (set-face-attribute face nil (car attr) 'unspecified)))))
-
 (defun vim-tab-bar--apply ()
   "Apply Vim-like color themes to Emacs tab bars."
   (let* ((color-fallback-light (face-attribute 'default :foreground))
@@ -142,35 +135,60 @@ the current group."
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
-    ;; Make this work with Arch Linux Emacs
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-inactive)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-ungrouped)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-inactive)
-    ;; (vim-tab-bar--reset-face-attributes 'tab-bar-tab-group-current)
     (custom-set-faces
      ;; The tab bar's appearance
      `(tab-bar
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
                         :height unspecified
-                        :inherit unspecified))))
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified))))
      ;; Inactive tabs
      `(tab-bar-tab-inactive
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified))))
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
+                        :height unspecified
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified))))
      ;; Active tab
      `(tab-bar-tab
        ((t (:background ,bg-tab-active
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified))))
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
+                        :height unspecified
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified))))
 
      ;; The tab bar's appearance
      `(tab-bar-tab-ungrouped
@@ -178,7 +196,18 @@ the current group."
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified))))
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
+                        :height unspecified
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified))))
 
      ;; Inactive tabs
      `(tab-bar-tab-group-inactive
@@ -186,7 +215,18 @@ the current group."
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified))))
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
+                        :height unspecified
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified))))
 
      ;; Active tab
      `(tab-bar-tab-group-current
@@ -194,7 +234,18 @@ the current group."
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
                         :height unspecified
-                        :inherit unspecified)))))
+                        :inherit unspecified
+                        :family unspecified
+                        :foundry unspecified
+                        :width unspecified
+                        :height unspecified
+                        :weight unspecified
+                        :slant unspecified
+                        :underline unspecified
+                        :overline unspecified
+                        :extend unspecified
+                        :strike-through unspecified
+                        :stipple unspecified)))))
 
     (unless (daemonp)
       (set-face-attribute
