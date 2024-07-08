@@ -158,7 +158,6 @@ the current group."
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
-                        :height unspecified
                         :inherit unspecified
                         :family unspecified
                         :foundry unspecified
@@ -176,7 +175,6 @@ the current group."
        ((t (:background ,bg-tab-active
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
-                        :height unspecified
                         :inherit unspecified
                         :family unspecified
                         :foundry unspecified
@@ -195,7 +193,6 @@ the current group."
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
-                        :height unspecified
                         :inherit unspecified
                         :family unspecified
                         :foundry unspecified
@@ -214,7 +211,6 @@ the current group."
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-inactive
                         :inverse-video unspecified
-                        :height unspecified
                         :inherit unspecified
                         :family unspecified
                         :foundry unspecified
@@ -233,7 +229,6 @@ the current group."
        ((t (:background ,bg-tab-inactive
                         :foreground ,fg-tab-active
                         :inverse-video unspecified
-                        :height unspecified
                         :inherit unspecified
                         :family unspecified
                         :foundry unspecified
