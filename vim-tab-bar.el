@@ -288,7 +288,7 @@ FRAME is the frame."
         (tab-bar-mode 1))
     (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
-
+    (tab-bar-mode -1)
     ;; (let ((current-theme (car custom-enabled-themes)))
     ;;   (when current-theme
     ;;     (disable-theme current-theme)
