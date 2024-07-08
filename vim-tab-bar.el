@@ -104,8 +104,11 @@ the current group."
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 
-(defun vim-tab-bar--apply ()
-  "Apply Vim-like color themes to Emacs tab bars."
+(defun vim-tab-bar--apply (&optional frame)
+  "Apply Vim-like color themes to Emacs tab bars.
+FRAME is the frame."
+  (unless frame
+    (setq frame (selected-frame)))
   (let* ((color-fallback-light (face-attribute 'default :foreground))
          (fallback-color-dark (face-attribute 'default :background))
          (bg-default (or (face-attribute 'default :background)
@@ -135,141 +138,138 @@ the current group."
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
-    (custom-set-faces
-     ;; The tab bar's appearance
-     `(tab-bar
-       ((t (:background ,bg-tab-inactive
-                        :foreground ,fg-tab-inactive
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified))))
-     ;; Inactive tabs
-     `(tab-bar-tab-inactive
-       ((t (:background ,bg-tab-inactive
-                        :foreground ,fg-tab-inactive
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified))))
-     ;; Active tab
-     `(tab-bar-tab
-       ((t (:background ,bg-tab-active
-                        :foreground ,fg-tab-active
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified))))
 
-     ;; The tab bar's appearance
-     `(tab-bar-tab-ungrouped
-       ((t (:background ,bg-tab-inactive
-                        :foreground ,fg-tab-inactive
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified))))
+    ;; The tab bar's appearance
+    (set-face-attribute 'tab-bar frame
+                        :background bg-tab-inactive
+                        :foreground fg-tab-inactive
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
 
-     ;; Inactive tabs
-     `(tab-bar-tab-group-inactive
-       ((t (:background ,bg-tab-inactive
-                        :foreground ,fg-tab-inactive
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified))))
+    ;; Inactive tabs
+    (set-face-attribute 'tab-bar-tab-inactive frame
+                        :background bg-tab-inactive
+                        :foreground fg-tab-inactive
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
 
-     ;; Active tab
-     `(tab-bar-tab-group-current
-       ((t (:background ,bg-tab-inactive
-                        :foreground ,fg-tab-active
-                        :inverse-video unspecified
-                        :inherit unspecified
-                        :family unspecified
-                        :foundry unspecified
-                        :width unspecified
-                        :height unspecified
-                        :weight unspecified
-                        :slant unspecified
-                        :underline unspecified
-                        :overline unspecified
-                        :extend unspecified
-                        :strike-through unspecified
-                        :stipple unspecified)))))
+    ;; Active tab
+    (set-face-attribute 'tab-bar-tab frame
+                        :background bg-tab-active
+                        :foreground fg-tab-active
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
+
+    ;; The tab bar's ungrouped appearance
+    (set-face-attribute 'tab-bar-tab-ungrouped frame
+                        :background bg-tab-inactive
+                        :foreground fg-tab-inactive
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
+
+    ;; Inactive tab groups
+    (set-face-attribute 'tab-bar-tab-group-inactive frame
+                        :background bg-tab-inactive
+                        :foreground fg-tab-inactive
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
+
+    ;; Current tab group
+    (set-face-attribute 'tab-bar-tab-group-current frame
+                        :background bg-tab-inactive
+                        :foreground fg-tab-active
+                        :inverse-video 'unspecified
+                        :inherit 'unspecified
+                        :family 'unspecified
+                        :foundry 'unspecified
+                        :width 'unspecified
+                        :height 'unspecified
+                        :weight 'unspecified
+                        :slant 'unspecified
+                        :underline 'unspecified
+                        :overline 'unspecified
+                        :extend 'unspecified
+                        :strike-through 'unspecified
+                        :stipple 'unspecified)
 
     (unless (daemonp)
       (set-face-attribute
-       'tab-bar nil
+       'tab-bar frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
       (set-face-attribute
-       'tab-bar-tab-inactive nil
+       'tab-bar-tab-inactive frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
       (set-face-attribute
-       'tab-bar-tab nil
+       'tab-bar-tab frame
        :box `(:line-width 3 :color ,bg-tab-active :style nil))
       (set-face-attribute
-       'tab-bar-tab-ungrouped nil
+       'tab-bar-tab-ungrouped frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
       (set-face-attribute
-       'tab-bar-tab-group-inactive nil
+       'tab-bar-tab-group-inactive frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
       (set-face-attribute
-       'tab-bar-tab-group-current nil
+       'tab-bar-tab-group-current frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
 (defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
   "Run the hooks that are in `vim-tab-bar--after-load-theme-hook'."
   (run-hooks 'vim-tab-bar--after-load-theme-hook))
-
-(defun vim-tab-bar--apply-vim-tab-bar-frame (frame)
-  "Apply `vim-tab-bar--apply` settings to the given FRAME."
-  (with-selected-frame frame
-    (vim-tab-bar--apply)))
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
@@ -279,17 +279,21 @@ the current group."
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
+        (vim-tab-bar--apply)
         (advice-add 'load-theme :after
                     #'vim-tab-bar--run-after-load-theme-hook)
-        (vim-tab-bar--apply)
         ;; Hooks
-        (add-hook 'after-make-frame-functions
-                  #'vim-tab-bar--apply-vim-tab-bar-frame)
+        (add-hook 'after-make-frame-functions #'vim-tab-bar--apply)
         (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
         (tab-bar-mode 1))
-    (remove-hook 'after-make-frame-functions
-                 #'vim-tab-bar--apply-vim-tab-bar-frame)
-    (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)))
+    (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
+    (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
+
+    ;; (let ((current-theme (car custom-enabled-themes)))
+    ;;   (when current-theme
+    ;;     (disable-theme current-theme)
+    ;;     (load-theme current-theme t)))
+    ))
 
 (provide 'vim-tab-bar)
 ;;; vim-tab-bar.el ends here
