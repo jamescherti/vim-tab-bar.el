@@ -247,7 +247,8 @@ FRAME is the frame."
                         :strike-through 'unspecified
                         :stipple 'unspecified)
 
-    (unless (daemonp)
+    (when (and (display-graphic-p)
+               (not (daemonp)))
       (set-face-attribute
        'tab-bar frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
