@@ -28,8 +28,9 @@ The `vim-tab-bar` package can be installed from MELPA by adding the following to
 ```emacs-lisp
 (use-package vim-tab-bar
   :ensure t
-  :config
-  (vim-tab-bar-mode 1))
+  :commands vim-tab-bar-mode
+  :hook
+  (after-init . vim-tab-bar-mode))
 ```
 
 ## Options
