@@ -25,7 +25,11 @@ The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style
 
 ## Installation
 
-The `vim-tab-bar` package can be installed from MELPA by adding the following to your init.el:
+To install the `vim-tab-bar` from MELPA:
+
+1. If you haven't already done so, [add MELPA repository to your Emacs configuration](https://melpa.org/#/getting-started).
+
+2. Add the following code to your Emacs init file to install `vim-tab-bar` from MELPA:
 ```emacs-lisp
 (use-package vim-tab-bar
   :ensure t
