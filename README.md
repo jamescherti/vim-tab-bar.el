@@ -1,8 +1,8 @@
 # vim-tab-bar.el
-![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/made-for-gnu-emacs.svg)
 [![MELPA](https://melpa.org/packages/vim-tab-bar-badge.svg)](https://melpa.org/#/vim-tab-bar)
 [![MELPA Stable](https://stable.melpa.org/packages/vim-tab-bar-badge.svg)](https://stable.melpa.org/#/vim-tab-bar)
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/made-for-gnu-emacs.svg)
 
 The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme, providing a consistent look for your Emacs tab-bar.
 
