@@ -1,4 +1,5 @@
 # vim-tab-bar.el
+![Build Status](https://github.com/jamescherti/vim-tab-bar.el/actions/workflows/ci.yml/badge.svg)
 [![MELPA](https://melpa.org/packages/vim-tab-bar-badge.svg)](https://melpa.org/#/vim-tab-bar)
 [![MELPA Stable](https://stable.melpa.org/packages/vim-tab-bar-badge.svg)](https://stable.melpa.org/#/vim-tab-bar)
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
