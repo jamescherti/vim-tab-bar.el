@@ -295,20 +295,15 @@ FRAME is the frame."
   (if vim-tab-bar-mode
       (progn
         (vim-tab-bar--apply)
-        (advice-add 'load-theme :after
-                    #'vim-tab-bar--run-after-load-theme-hook)
+        (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         ;; Hooks
         (add-hook 'after-make-frame-functions #'vim-tab-bar--apply)
         (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
         (tab-bar-mode 1))
-    (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
-    (tab-bar-mode -1)
-    ;; (let ((current-theme (car custom-enabled-themes)))
-    ;;   (when current-theme
-    ;;     (disable-theme current-theme)
-    ;;     (load-theme current-theme t)))
-    ))
+    (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
+    (remove-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
+    (tab-bar-mode -1)))
 
 (provide 'vim-tab-bar)
 ;;; vim-tab-bar.el ends here
