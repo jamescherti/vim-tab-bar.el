@@ -150,6 +150,7 @@ FRAME is the frame."
       (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
     (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
     (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
+    (setq tab-bar-auto-width nil)
     (setq tab-bar-close-button-show nil)
     (setq tab-bar-auto-width nil)
 
