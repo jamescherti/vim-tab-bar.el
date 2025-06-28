@@ -120,9 +120,13 @@ the current group."
 
 (defun vim-tab-bar--apply (&optional frame)
   "Apply Vim-like color themes to Emacs tab bars.
-FRAME is the frame."
-  (unless frame
-    (setq frame (selected-frame)))
+
+If FRAME is nil, apply the theme globally to all frames; otherwise, apply it to
+the specified FRAME only.
+
+This function sets tab bar appearance variables and customizes faces to emulate
+a Vim-style color scheme for tab bars, including active, inactive, grouped, and
+ungrouped tabs."
   (let* ((color-fallback-light (face-attribute 'default :foreground))
          (fallback-color-dark (face-attribute 'default :background))
          (bg-default (or (face-attribute 'default :background)
@@ -301,10 +305,8 @@ FRAME is the frame."
       (progn
         (vim-tab-bar--apply)
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
-        (add-hook 'after-make-frame-functions #'vim-tab-bar--apply)
         (tab-bar-mode 1))
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
-    (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
     (tab-bar-mode -1)))
 
 ;;;###autoload
