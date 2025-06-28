@@ -141,7 +141,7 @@ FRAME is the frame."
          (bg-tab-active bg-default))
     (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
       (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
-    (customize-set-variable 'tab-bar-tab-hints tab-bar-tab-hints nil)  ; Tab numbers on the left
+    (customize-set-variable 'tab-bar-tab-hints nil)  ; Tab numbers on the left
     (customize-set-variable 'tab-bar-close-button-show nil)
     (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
     (setq tab-bar-auto-width nil)
