@@ -288,8 +288,8 @@ FRAME is the frame."
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))))
 
 (defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
-  "Run the hooks that are in `vim-tab-bar--after-load-theme-hook'."
-  (run-hooks 'vim-tab-bar--after-load-theme-hook))
+  "Run `vim-tab-bar--apply' after `load-theme'."
+  (vim-tab-bar--apply))
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
@@ -301,13 +301,10 @@ FRAME is the frame."
       (progn
         (vim-tab-bar--apply)
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
-        ;; Hooks
         (add-hook 'after-make-frame-functions #'vim-tab-bar--apply)
-        (add-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
         (tab-bar-mode 1))
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
     (remove-hook 'after-make-frame-functions #'vim-tab-bar--apply)
-    (remove-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
     (tab-bar-mode -1)))
 
 ;;;###autoload
