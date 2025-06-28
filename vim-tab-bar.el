@@ -139,20 +139,24 @@ FRAME is the frame."
          (fg-tab-inactive fg-modeline-inactive)
          (fg-tab-active fg-default)
          (bg-tab-active bg-default))
+    (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
+      (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
+    (customize-set-variable 'tab-bar-tab-hints tab-bar-tab-hints nil)  ; Tab numbers on the left
+    (customize-set-variable 'tab-bar-close-button-show nil)
+    (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
+    (setq tab-bar-auto-width nil)
+
     (setq tab-bar-tab-name-format-function
           #'vim-tab-bar--name-format-function)
     (setq tab-bar-tab-group-format-function
           #'vim-tab-bar--group-format-function)
     (if vim-tab-bar-show-groups
-        (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
-      (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
-    (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
-      (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
-    (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
-    (setq tab-bar-tab-hints nil)  ; Tab numbers of the left of the label
-    (setq tab-bar-auto-width nil)
-    (setq tab-bar-close-button-show nil)
-    (setq tab-bar-auto-width nil)
+        (customize-set-variable
+         'tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
+      (customize-set-variable
+       'tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
+
+    (customize-set-variable 'tab-bar-show t)
 
     ;; The tab bar's appearance
     (set-face-attribute 'tab-bar frame
