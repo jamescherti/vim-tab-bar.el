@@ -310,5 +310,6 @@ FRAME is the frame."
     (remove-hook 'vim-tab-bar--after-load-theme-hook #'vim-tab-bar--apply)
     (tab-bar-mode -1)))
 
+;;;###autoload
 (provide 'vim-tab-bar)
 ;;; vim-tab-bar.el ends here
