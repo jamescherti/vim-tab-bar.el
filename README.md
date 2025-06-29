@@ -1,11 +1,17 @@
-# vim-tab-bar.el
+# vim-tab-bar.el - A Vim-Inspired Emacs Tab-Bar That Automatically Adapts to Any Theme
 ![Build Status](https://github.com/jamescherti/vim-tab-bar.el/actions/workflows/melpazoid.yml/badge.svg)
 [![MELPA](https://melpa.org/packages/vim-tab-bar-badge.svg)](https://melpa.org/#/vim-tab-bar)
 [![MELPA Stable](https://stable.melpa.org/packages/vim-tab-bar-badge.svg)](https://stable.melpa.org/#/vim-tab-bar)
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/made-for-gnu-emacs.svg)
 
-The `vim-tab-bar.el` package enhances Emacs' built-in tab-bar, giving it a style similar to Vim's tabbed browsing interface. It also ensures that the tab-bar's appearance aligns with the current theme's overall color scheme, providing a consistent look for your Emacs tab-bar.
+The *vim-tab-bar* package enhances Emacs' built-in tab-bar with a clean, Vim-inspired design that automatically adapts to the current Emacs theme as well as any themes loaded subsequently. This ensures the tab-bar integrates with the rest of the Emacs interface, eliminating visual conflicts and making it feel like a natural extension of your Emacs environment.
+
+Even users who are not specifically interested in styling their tab-bar like Vim's appreciate the *vim-tab-bar* package because it adapts to their Emacs theme, offering a cohesive experience.
+
+![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
+
+(For those unfamiliar with Emacs’ built-in [tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html): Emacs' **tab-bar** feature allows users to manage multiple independent workspaces, where each workspace—comprising its own set of window layouts. This goes beyond just organizing tabs for different tasks or projects; it helps users switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It's similar to how web browsers or other editors use tabs, but with far more control over workspace organization and layout.*)
 
 ## Table of Contents
 
