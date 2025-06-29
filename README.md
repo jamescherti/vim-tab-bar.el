@@ -5,13 +5,13 @@
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/made-for-gnu-emacs.svg)
 
-The *vim-tab-bar* package enhances Emacs' built-in tab-bar with a clean, Vim-inspired design that automatically adapts to the current Emacs theme as well as any themes loaded subsequently. This ensures the tab-bar integrates with the rest of the Emacs interface, eliminating visual conflicts and making it feel like a natural extension of your Emacs environment.
+The *vim-tab-bar* package enhances Emacs' built-in *tab-bar* with a minimalist, Vim-inspired design that automatically adapts to the current Emacs theme as well as any themes loaded subsequently. This ensures the *tab-bar* integrates with the rest of the Emacs interface, eliminating visual conflicts and making it feel like a natural extension of your Emacs environment.
 
-Even users who are not specifically interested in styling their tab-bar like Vim's appreciate the *vim-tab-bar* package because it adapts to their Emacs theme, offering a cohesive experience.
+Beyond its Vim-like styling, the *vim-tab-bar* package benefits users who prioritize theme consistency, as it harmonizes the *tab-bar* appearance with their chosen Emacs theme, enhancing overall interface uniformity.
 
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
-(For those unfamiliar with Emacs’ built-in [tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html): Emacs' **tab-bar** feature allows users to manage multiple independent workspaces, where each workspace—comprising its own set of window layouts. This goes beyond just organizing tabs for different tasks or projects; it helps users switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It's similar to how web browsers or other editors use tabs, but with far more control over workspace organization and layout.*)
+*For those unfamiliar with Emacs’ built-in [tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* feature allows users to manage multiple independent workspaces, where each workspace—comprising its own set of window layouts. This goes beyond just organizing tabs for different tasks or projects; it helps users switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It's similar to how web browsers or other editors use tabs, but with far more control over workspace organization and layout.*
 
 ## Table of Contents
 
@@ -24,20 +24,20 @@ Even users who are not specifically interested in styling their tab-bar like Vim
 
 ## Features
 
-- The `vim-tab-bar.el` package ensures that tabs maintain a uniform appearance regardless of the theme used. This is also beneficial those who use themes that do not configure the tab-bar properly.
+- The *vim-tab-bar* package ensures that tabs maintain a uniform appearance regardless of the theme used. This is also beneficial those who use themes that do not configure the *tab-bar* properly.
 - Group Formatting: Optionally display and format tab groups.
-- Makes the Emacs `tab-bar` (Emacs version >= 27.1) look in a manner reminiscent of Vim's tabbed browsing interface:
+- Makes the Emacs *tab-bar* (Emacs version >= 27.1) look in a manner reminiscent of Vim's tabbed browsing interface:
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
-(The screenshot above shows how the `vim-tab-bar.el` package makes the Emacs `tab-bar` appear)
+(The screenshot above shows how the *vim-tab-bar* package makes the Emacs *tab-bar* appear)
 
 ## Installation
 
-To install `vim-tab-bar` from MELPA:
+To install *vim-tab-bar* from MELPA:
 
 1. If you haven't already done so, [add MELPA repository to your Emacs configuration](https://melpa.org/#/getting-started).
 
-2. Add the following code to your Emacs init file to install `vim-tab-bar` from MELPA:
+2. Add the following code to your Emacs init file to install *vim-tab-bar* from MELPA:
 ```emacs-lisp
 (use-package vim-tab-bar
   :ensure t
@@ -59,7 +59,7 @@ By default, tab groups are not displayed. You can make `tab-bar-vim` display the
 
 ## Screenshots
 
-The screenshots below shows how the `vim-tab-bar.el` package makes the Emacs `tab-bar` appear:
+The screenshots below shows how the *vim-tab-bar* package makes the Emacs *tab-bar* appear:
 
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim-tomorrow-night-deepblue.png)
 
