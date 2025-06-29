@@ -11,7 +11,7 @@ Beyond its Vim-inspired design, the **vim-tab-bar package is valued by users who
 
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
-*For those unfamiliar with Emacs’ built-in [tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* feature allows users to manage multiple independent workspaces, each comprising its own set of window layouts. This goes beyond simply organizing tabs for different tasks or projects; it enables users to switch between distinct contexts—such as coding, reading documentation, or managing emails, without losing track of their previous work. *It is similar to how web browsers or other editors use tabs, but offers far greater control over workspace organization and layout.*
+*For those unfamiliar with Emacs’ built-in [tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* feature allows users to manage multiple independent workspaces, each comprising its own set of window layouts. This goes beyond simply organizing tabs for different tasks or projects; it enables users to switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It is similar to how web browsers or other editors use tabs, but offers far greater control over workspace organization and layout.*
 
 ## Table of Contents
 
