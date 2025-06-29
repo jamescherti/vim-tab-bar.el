@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/made-for-gnu-emacs.svg)
 
-The *vim-tab-bar* package enhances Emacs' built-in *tab-bar* with a minimalist, Vim-inspired design that automatically adapts to the current Emacs theme as well as any themes loaded subsequently. This ensures the *tab-bar* integrates with the rest of the Emacs interface, eliminating visual conflicts and making it feel like a natural extension of your Emacs environment.
+The *vim-tab-bar* package enhances **Emacs' built-in tab-bar with a minimalist, Vim-inspired design that automatically adapts to the current Emacs theme** as well as any themes loaded subsequently. This ensures the *tab-bar* integrates with the rest of the Emacs interface, eliminating visual conflicts and making it feel like a natural extension of your Emacs environment.
 
 Beyond its Vim-like styling, the *vim-tab-bar* package benefits users who prioritize theme consistency, as it harmonizes the *tab-bar* appearance with their chosen Emacs theme, enhancing overall interface uniformity.
 
