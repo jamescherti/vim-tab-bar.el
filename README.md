@@ -46,25 +46,22 @@ To install *vim-tab-bar* from MELPA:
   :hook
   (after-init . vim-tab-bar-mode))
 ```
+
 ## Usage
-These are the default keybindings for Vim Tab Bar. 
 
-```
-C-x t 2      ;; tab-bar-new-tab (alias: tab-new)
+The default keybindings for Emacs’s built-in tab-bar are as follows:
 
-C-x t b <RET>     ;; switch-to-buffer-other-tab
-C-x t f <RET>     ;; find-file-other-tab
-C-x t d <RET>     ;; dired-other-tab
-C-x t t C-x b <RET> ;; other-tab-prefix, then run any “open” command
+* `C-x t 2`: Create a new tab (`tab-bar-new-tab` / `tab-new`)
+* `C-x t b RET`: Switch to a buffer in a new tab (`switch-to-buffer-other-tab`)
+* `C-x t f RET`: Open a file in a new tab (`find-file-other-tab`)
+* `C-x t d RET`: Open Dired in a new tab (`dired-other-tab`)
+* `C-x t t C-x b RET`: Use the tab-bar command prefix, then run any buffer-related command (e.g., `other-tab-prefix`, followed by `switch-to-buffer`)
+* `C-x t o` or `C-TAB`: Switch to the next tab (`tab-bar-switch-to-next-tab`)
+* `S-C-TAB`: Switch to the previous tab (`tab-bar-switch-to-prev-tab`)
+* `C-x t RET`: Switch to a named tab with completion (`tab-switch`)
 
-C-x t o      ;; tab-bar-switch-to-next-tab   (also: C-TAB)
-S-C-TAB      ;; tab-bar-switch-to-prev-tab
-C-x t RET    ;; tab-switch   (type a tab name with completion)
-
-```
-If you have Which Key installed, these are some options for potential bindings.
-
-```
+If you have Which Key installed, here are some options for potential bindings:
+```elisp
 (my/leader-keys
   "t2" '(tab-bar-new-tab               :which-key "New Tab")
   "tb" '(switch-to-buffer-other-tab    :which-key "Buffer→Tab")
