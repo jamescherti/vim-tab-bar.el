@@ -17,6 +17,7 @@ Beyond its Vim-inspired design, the **vim-tab-bar package is valued by users who
 
 - [Features](#features)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Options](#options)
 - [Screenshots](#screenshots)
 - [License](#license)
@@ -44,6 +45,32 @@ To install *vim-tab-bar* from MELPA:
   :commands vim-tab-bar-mode
   :hook
   (after-init . vim-tab-bar-mode))
+```
+## Usage
+These are the default keybindings for Vim Tab Bar. 
+
+```
+C-x t 2      ;; tab-bar-new-tab (alias: tab-new)
+
+C-x t b <RET>     ;; switch-to-buffer-other-tab
+C-x t f <RET>     ;; find-file-other-tab
+C-x t d <RET>     ;; dired-other-tab
+C-x t t C-x b <RET> ;; other-tab-prefix, then run any “open” command
+
+C-x t o      ;; tab-bar-switch-to-next-tab   (also: C-TAB)
+S-C-TAB      ;; tab-bar-switch-to-prev-tab
+C-x t RET    ;; tab-switch   (type a tab name with completion)
+
+```
+If you have Which Key installed, these are some options for potential bindings.
+
+```
+(my/leader-keys
+  "t2" '(tab-bar-new-tab               :which-key "New Tab")
+  "tb" '(switch-to-buffer-other-tab    :which-key "Buffer→Tab")
+  "tf" '(find-file-other-tab           :which-key "File→Tab")
+  "to" '(tab-bar-switch-to-next-tab    :which-key "Next Tab")
+  "tO" '(tab-bar-switch-to-prev-tab    :which-key "Prev Tab"))
 ```
 
 ## Options
