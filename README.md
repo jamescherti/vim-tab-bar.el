@@ -60,16 +60,6 @@ The default keybindings for Emacs’s built-in tab-bar are as follows:
 * `S-C-TAB`: Switch to the previous tab (`tab-bar-switch-to-prev-tab`)
 * `C-x t RET`: Switch to a named tab with completion (`tab-switch`)
 
-If you have Which Key installed, here are some options for potential bindings:
-```elisp
-(my/leader-keys
-  "t2" '(tab-bar-new-tab               :which-key "New Tab")
-  "tb" '(switch-to-buffer-other-tab    :which-key "Buffer→Tab")
-  "tf" '(find-file-other-tab           :which-key "File→Tab")
-  "to" '(tab-bar-switch-to-next-tab    :which-key "Next Tab")
-  "tO" '(tab-bar-switch-to-prev-tab    :which-key "Prev Tab"))
-```
-
 ## Options
 
 ### Show the tab groups
