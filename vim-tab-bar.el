@@ -156,12 +156,10 @@ ungrouped tabs."
     (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
 
     (if vim-tab-bar-show-groups
-        (customize-set-variable
-         'tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
-      (customize-set-variable
-       'tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
+        (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
+      (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
 
-    (customize-set-variable 'tab-bar-show t)
+    (setq tab-bar-show t)
 
     ;; The tab bar's appearance
     (set-face-attribute 'tab-bar frame
