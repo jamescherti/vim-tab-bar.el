@@ -145,15 +145,16 @@ ungrouped tabs."
          (bg-tab-active bg-default))
     (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
       (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
-    (customize-set-variable 'tab-bar-tab-hints nil)  ; Tab numbers on the left
-    (customize-set-variable 'tab-bar-close-button-show nil)
     (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
     (setq tab-bar-auto-width nil)
 
-    (setq tab-bar-tab-name-format-function
-          #'vim-tab-bar--name-format-function)
-    (setq tab-bar-tab-group-format-function
-          #'vim-tab-bar--group-format-function)
+    ;; Using setq in these defcustom. These have :set function, but
+    ;; tab-bar-format will call the same.
+    (setq tab-bar-tab-hints nil)  ; Tab numbers on the left
+    (setq tab-bar-close-button-show nil)
+    (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
+    (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
+
     (if vim-tab-bar-show-groups
         (customize-set-variable
          'tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
