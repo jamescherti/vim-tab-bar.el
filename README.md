@@ -9,6 +9,8 @@ The *vim-tab-bar* Emacs package enhances the built-in tab-bar with **a minimalis
 
 Beyond its Vim-inspired design, the **vim-tab-bar package is valued by users who prioritize theme consistency**, as it integrates the Emacs tab-bar with any Emacs theme, producing a visually coherent and polished interface.
 
+If this enhances your workflow, please show your support by **⭐ starring vim-tab-bar on GitHub** to help more Emacs users discover its benefits.
+
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
 *For users unfamiliar with [Emacs’ built-in tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* allows users to manage multiple independent workspaces, each comprising its own set of window layouts. This goes beyond simply organizing tabs for different tasks or projects; it enables users to switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It is similar to how web browsers or other editors use tabs, but offers far greater control over workspace organization and layout.*
