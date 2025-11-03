@@ -296,7 +296,9 @@ ungrouped tabs."
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
-  "Toggle `vim-tab-bar-mode'."
+  "Emulate the Vim tab bar.
+This styles the tab-bar to emulate Vim's tabbed interface while maintaining
+visual consistency with the currently active theme's color scheme."
   :global t
   :lighter " VimTB"
   :group 'vim-tab-bar
