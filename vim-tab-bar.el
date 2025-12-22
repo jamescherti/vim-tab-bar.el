@@ -85,39 +85,6 @@ The function should take a string as its sole argument and return a string."
   :type 'function
   :group 'vim-tab-bar)
 
-(defcustom vim-tab-bar-show t
-  "Defines when to show the Vim tab bar.
-If set to t, which is the default, automatically enable Vim tab bar when
-commands that create new window configurations are used, such as `tab-new'.
-
-If set to a non-negative integer, display the tab bar only when the number of
-tabs exceeds that value. In particular, a value of 1 hides the tab bar when only
-a single tab exists and shows it again when additional tabs are created. When a
-non-negative integer is used, tab bar visibility is determined independently for
-each frame, depending on the number of tabs present in that frame and whether it
-exceeds the specified value.
-
-If set to nil, keep the tab bar permanently hidden. In this case, persistent
-named window configurations remain available through keyboard commands such as
-`tab-new', `tab-close`, `tab-next', and `tab-switcher'.
-
-Setting this variable directly has no effect. It must be customized through the
-customization interface, as described in the Info node Easy Customization. Once
-customized, the tab bar is updated automatically on all frames to reflect the
-new value.
-
-To enable or disable the tab bar on a per-frame basis, use the command
-`toggle-frame-tab-bar'."
-  :type '(choice
-          (const :tag "Always show" t)
-          (integer :tag "Show when tab count exceeds")
-          (const :tag "Always hide" nil))
-  :set (lambda (sym value)
-         (set-default sym value)
-         (unless (eq tab-bar-show vim-tab-bar-show)
-           (customize-set-variable 'tab-bar-show value)))
-  :group 'vim-tab-bar)
-
 (defvar vim-tab-bar--after-load-theme-hook nil
   "Hook run after `load-theme' to update the tab-bar faces.")
 
@@ -191,9 +158,6 @@ ungrouped tabs."
     (if vim-tab-bar-show-groups
         (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
       (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
-
-    (unless (eq tab-bar-show vim-tab-bar-show)
-      (customize-set-variable 'tab-bar-show vim-tab-bar-show))
 
     ;; The tab bar's appearance
     (set-face-attribute 'tab-bar frame
