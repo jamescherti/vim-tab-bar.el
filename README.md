@@ -62,32 +62,30 @@ The default keybindings for Emacs’s built-in tab-bar are as follows:
 * `S-C-TAB`: Switch to the previous tab (`tab-bar-switch-to-prev-tab`)
 * `C-x t RET`: Switch to a named tab with completion (`tab-switch`)
 
-## Options
+## Frequently asked questions
 
-### Automatic hide the Vim Tab Bar
-
-By default, *vim-tab-bar* displays the Vim tab bar whenever it is enabled. To hide the tab bar when only a single tab exists, enable the following option:
-
-```elisp
-;; Hide the Vim Tab Bar when only a single tab exists
-(customize-set-variable 'vim-tab-bar-show 1)
-```
-
-Explanation:
-- If `vim-tab-bar-show` is set to t (default), which is the default, automatically enable Vim tab bar when commands that create new window configurations are used, such as `tab-new'.
-
-- If `vim-tab-bar-show` is set to a non-negative integer, display the tab bar only when the number of tabs exceeds that value. In particular, a value of 1 hides the tab bar when only a single tab exists and shows it again when additional tabs are created. When a non-negative integer is used, tab bar visibility is determined independently for each frame, depending on the number of tabs present in that frame and whether it exceeds the specified value.
-
-- If set to nil, keep the tab bar permanently hidden. In this case, persistent named window configurations remain available through keyboard commands such as `tab-new`, `tab-close`, `tab-next`, and `tab-switcher`.
-
-### Show the tab groups
+### How to Show the tab groups?
 
 By default, tab groups are not displayed. You can make `tab-bar-vim` display them by setting the variable:
 ``` emacs-lisp
 (setq vim-tab-bar-show-groups t)
 ```
 
-###
+### How to Automatic hide the Vim Tab Bar?
+
+By default, *vim-tab-bar* displays the Vim tab bar whenever it is enabled. To hide the tab bar when only a single tab exists, enable the following option:
+
+```elisp
+;; Hide the Vim Tab Bar when only a single tab exists
+(customize-set-variable 'tab-bar-show 1)
+```
+
+Explanation:
+- If `tab-bar-show` is set to t (default), which is the default, automatically enable Vim tab bar when commands that create new window configurations are used, such as `tab-new'.
+
+- If `tab-bar-show` is set to a non-negative integer, display the tab bar only when the number of tabs exceeds that value. In particular, a value of 1 hides the tab bar when only a single tab exists and shows it again when additional tabs are created. When a non-negative integer is used, tab bar visibility is determined independently for each frame, depending on the number of tabs present in that frame and whether it exceeds the specified value.
+
+- If set to nil, keep the tab bar permanently hidden. In this case, persistent named window configurations remain available through keyboard commands such as `tab-new`, `tab-close`, `tab-next`, and `tab-switcher`.
 
 ## Screenshots
 
