@@ -45,8 +45,10 @@ To install *vim-tab-bar* from MELPA:
 (use-package vim-tab-bar
   :ensure t
   :commands vim-tab-bar-mode
-  :hook
-  (after-init . vim-tab-bar-mode))
+  :init
+  (if (daemonp)
+      (add-hook 'server-after-make-frame-hook #'vim-tab-bar-mode)
+    (add-hook 'emacs-startup-hook #'vim-tab-bar-mode)))
 ```
 
 ## Usage
