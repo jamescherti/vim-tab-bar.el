@@ -267,8 +267,7 @@ ungrouped tabs."
                         :strike-through 'unspecified
                         :stipple 'unspecified)
 
-    (when (and (display-graphic-p)
-               (not (daemonp)))
+    (when (display-graphic-p)
       (set-face-attribute
        'tab-bar frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
@@ -302,6 +301,8 @@ visual consistency with the currently active theme's color scheme."
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
+        (when (daemonp)
+          (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
         (vim-tab-bar--apply)
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         (tab-bar-mode 1))
