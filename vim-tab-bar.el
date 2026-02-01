@@ -301,11 +301,11 @@ visual consistency with the currently active theme's color scheme."
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
+        (tab-bar-mode 1)
         (when (daemonp)
           (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
         (vim-tab-bar--apply)
-        (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
-        (tab-bar-mode 1))
+        (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook))
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
     (tab-bar-mode -1)))
 
