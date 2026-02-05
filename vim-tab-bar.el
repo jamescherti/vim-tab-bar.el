@@ -58,10 +58,23 @@
   :prefix "vim-tab-bar-"
   :link '(url-link "https://github.com/jamescherti/vim-tab-bar.el"))
 
+(defun vim-tab-bar--apply-tab-bar-show-groups (enabled)
+  "Update the tab-bar display according to `vim-tab-bar-show-groups'.
+If ENABLED is non-nil, tab groups are shown in the tab bar.
+If ENABLED is nil, only individual tabs are displayed.
+This function updates `tab-bar-format' accordingly."
+  (if enabled
+      (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
+    (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
+  (force-mode-line-update))
+
 (defcustom vim-tab-bar-show-groups nil
-  "Non-nil means show groups in the tab-bar."
+  "If non-nil, display tab groups in the tab-bar."
   :type 'boolean
-  :group 'vim-tab-bar)
+  :group 'vim-tab-bar
+  :set (lambda (symbol enabled)
+         (set-default symbol enabled)
+         (vim-tab-bar--apply-tab-bar-show-groups enabled)))
 
 (defun vim-tab-bar--default-format-tab-name (name)
   "Return NAME surrounded by spaces."
@@ -155,9 +168,7 @@ ungrouped tabs."
     (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
     (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
 
-    (if vim-tab-bar-show-groups
-        (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
-      (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
+    (vim-tab-bar--apply-tab-bar-show-groups vim-tab-bar-show-groups)
 
     ;; Ensure that any changes to user options that affect the mode line or UI,
     ;; such as tab-bar formatting and appearance, are immediately reflected by
