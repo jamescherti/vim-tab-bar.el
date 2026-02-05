@@ -354,11 +354,10 @@ visual consistency with the currently active theme's color scheme."
   (if vim-tab-bar-mode
       (progn
         (if (daemonp)
-            (progn
-              (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply)
-              ;; Check if we are currently in an active client
-              (when (frame-parameter nil 'client)
-                (vim-tab-bar--apply)))
+            ;; Check if we are currently in an active client
+            (if (frame-parameter nil 'client)
+                (vim-tab-bar--apply)
+              (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
           (vim-tab-bar--apply))
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         (tab-bar-mode 1))
