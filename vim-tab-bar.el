@@ -355,7 +355,9 @@ visual consistency with the currently active theme's color scheme."
       (progn
         (if (daemonp)
             ;; Check if we are currently in an active client
-            (if (frame-parameter nil 'client)
+            (if (seq-some (lambda (frame)
+                            (frame-parameter frame 'client))
+                          (frame-list))
                 (vim-tab-bar--apply)
               (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
           (vim-tab-bar--apply))
