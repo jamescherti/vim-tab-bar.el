@@ -51,6 +51,7 @@
 ;;; Code:
 
 (require 'tab-bar)
+(require 'cl-lib)
 
 (defgroup vim-tab-bar nil
   "Non-nil if vim-tab-bar mode mode is enabled."
@@ -58,15 +59,36 @@
   :prefix "vim-tab-bar-"
   :link '(url-link "https://github.com/jamescherti/vim-tab-bar.el"))
 
-(defun vim-tab-bar--apply-tab-bar-show-groups (enabled)
+(defcustom vim-tab-bar-format-tabs-groups
+  '(tab-bar-format-tabs-groups tab-bar-separator)
+  "The `tab-bar-format' used when `vim-tab-bar-show-groups' is non-nil."
+  :type '(repeat (choice (function-item tab-bar-format-tabs-groups)
+                         (function-item tab-bar-format-tabs)
+                         (function-item tab-bar-separator)
+                         (function-item tab-bar-format-align-right)
+                         (function-item tab-bar-format-global)
+                         function))
+  :group 'vim-tab-bar)
+
+(defcustom vim-tab-bar-format-tabs
+  '(tab-bar-format-tabs tab-bar-separator)
+  "The `tab-bar-format' used when `vim-tab-bar-show-groups' is nil."
+  :type '(repeat (choice (function-item tab-bar-format-tabs-groups)
+                         (function-item tab-bar-format-tabs)
+                         (function-item tab-bar-separator)
+                         (function-item tab-bar-format-align-right)
+                         (function-item tab-bar-format-global)
+                         function))
+  :group 'vim-tab-bar)
+
+(defun vim-tab-bar--apply-tab-bar-show-groups (value)
   "Update the tab-bar display according to `vim-tab-bar-show-groups'.
-If ENABLED is non-nil, tab groups are shown in the tab bar.
-If ENABLED is nil, only individual tabs are displayed.
-This function updates `tab-bar-format' accordingly."
-  (if enabled
-      (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
-    (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
-  (force-mode-line-update))
+If VALUE is non-nil, tab groups are shown; otherwise, only tabs are displayed."
+  (when (bound-and-true-p vim-tab-bar-mode)
+    (setq tab-bar-format (if value
+                             vim-tab-bar-format-tabs-groups
+                           vim-tab-bar-format-tabs))
+    (force-mode-line-update)))
 
 (defcustom vim-tab-bar-show-groups nil
   "If non-nil, display tab groups in the tab-bar."
@@ -156,19 +178,21 @@ ungrouped tabs."
          (fg-tab-inactive fg-modeline-inactive)
          (fg-tab-active fg-default)
          (bg-tab-active bg-default))
-    (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
-      (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
-    (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
-    (setq tab-bar-auto-width nil)
+    (cl-letf (((symbol-function 'force-mode-line-update)
+               (lambda (&rest _) nil)))
+      (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
+        (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
+      (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
+      (setq tab-bar-auto-width nil)
 
-    ;; Using setq in these defcustom. These have :set function, but
-    ;; tab-bar-format will call the same.
-    (setq tab-bar-tab-hints nil)  ; Tab numbers on the left
-    (setq tab-bar-close-button-show nil)
-    (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
-    (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
+      ;; Using setq in these defcustom. These have :set function, but
+      ;; tab-bar-format will call the same.
+      (setq tab-bar-tab-hints nil)  ; Tab numbers on the left
+      (setq tab-bar-close-button-show nil)
+      (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
+      (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
 
-    (vim-tab-bar--apply-tab-bar-show-groups vim-tab-bar-show-groups)
+      (vim-tab-bar--apply-tab-bar-show-groups vim-tab-bar-show-groups))
 
     ;; Ensure that any changes to user options that affect the mode line or UI,
     ;; such as tab-bar formatting and appearance, are immediately reflected by
