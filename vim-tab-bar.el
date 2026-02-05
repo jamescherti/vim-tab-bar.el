@@ -159,6 +159,14 @@ ungrouped tabs."
         (setq tab-bar-format '(tab-bar-format-tabs-groups tab-bar-separator))
       (setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator)))
 
+    ;; Ensure that any changes to user options that affect the mode line or UI,
+    ;; such as tab-bar formatting and appearance, are immediately reflected by
+    ;; forcing a mode line update. This prevents inconsistencies where the
+    ;; variables have been set programmatically but the display does not yet
+    ;; reflect those changes, guaranteeing that the tab bar and related elements
+    ;; are drawn correctly without waiting for the next automatic redisplay.
+    (force-mode-line-update)
+
     ;; The tab bar's appearance
     (set-face-attribute 'tab-bar frame
                         :background bg-tab-inactive
