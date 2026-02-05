@@ -182,7 +182,11 @@ ungrouped tabs."
                (lambda (&rest _) nil)))
       (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
         (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
-      (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
+
+      (if (display-graphic-p)
+          (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
+        (setq tab-bar-separator ""))
+
       (setq tab-bar-auto-width nil)
 
       ;; Using setq in these defcustom. These have :set function, but
