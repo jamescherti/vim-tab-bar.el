@@ -59,7 +59,7 @@
   :link '(url-link "https://github.com/jamescherti/vim-tab-bar.el"))
 
 (defcustom vim-tab-bar-show-groups nil
-  "Non-nil means show groups in the tab-bar."
+  "Show groups in the tab-bar."
   :type 'boolean
   :group 'vim-tab-bar)
 
@@ -299,11 +299,6 @@ ungrouped tabs."
   "Run `vim-tab-bar--apply' after `load-theme'."
   (vim-tab-bar--apply))
 
-(defun vim-tab-bar--server-after-make-frame-hook ()
-  "Apply config and remove the function from `server-after-make-frame-hook'."
-  (vim-tab-bar--apply)
-  (remove-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
-
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
   "Emulate the Vim tab bar.
@@ -314,9 +309,9 @@ visual consistency with the currently active theme's color scheme."
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
-        (if (daemonp)
-            (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply)
-          (vim-tab-bar--apply))
+        (when (daemonp)
+          (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
+        (vim-tab-bar--apply)
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         (tab-bar-mode 1))
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
