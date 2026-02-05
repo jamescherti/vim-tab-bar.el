@@ -317,7 +317,8 @@ ungrouped tabs."
 
     ;; Fix: entered--Lisp error: (error "Invalid face box" :line-width 3 :color
     ;; unspecified :style nil)
-    (when (and frame (display-graphic-p frame))
+    (when (or (not (daemonp))
+              (and frame (display-graphic-p frame)))
       (set-face-attribute
        'tab-bar frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
@@ -349,7 +350,8 @@ ungrouped tabs."
 (defun vim-tab-bar--server-after-make-frame-hook ()
   "Apply config and remove the function from `server-after-make-frame-hook'."
   (vim-tab-bar--apply)
-  (remove-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
+  (remove-hook 'server-after-make-frame-hook
+               #'vim-tab-bar--server-after-make-frame-hook))
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
@@ -362,7 +364,8 @@ visual consistency with the currently active theme's color scheme."
   (if vim-tab-bar-mode
       (progn
         (when (daemonp)
-          (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
+          (add-hook 'server-after-make-frame-hook
+                    #'vim-tab-bar--server-after-make-frame-hook))
         (vim-tab-bar--apply)
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         (tab-bar-mode 1))
