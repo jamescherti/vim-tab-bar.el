@@ -310,25 +310,29 @@ ungrouped tabs."
                         :strike-through 'unspecified
                         :stipple 'unspecified)
 
-    (when (display-graphic-p)
-      (set-face-attribute
-       'tab-bar frame
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
-      (set-face-attribute
-       'tab-bar-tab-inactive frame
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
-      (set-face-attribute
-       'tab-bar-tab frame
-       :box `(:line-width 3 :color ,bg-tab-active :style nil))
-      (set-face-attribute
-       'tab-bar-tab-ungrouped frame
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
-      (set-face-attribute
-       'tab-bar-tab-group-inactive frame
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
-      (set-face-attribute
-       'tab-bar-tab-group-current frame
-       :box `(:line-width 3 :color ,bg-tab-inactive :style nil)))))
+    (set-face-attribute
+     'tab-bar frame
+     :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+
+    (set-face-attribute
+     'tab-bar-tab-inactive frame
+     :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+
+    (set-face-attribute
+     'tab-bar-tab frame
+     :box `(:line-width 3 :color ,bg-tab-active :style nil))
+
+    (set-face-attribute
+     'tab-bar-tab-ungrouped frame
+     :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+
+    (set-face-attribute
+     'tab-bar-tab-group-inactive frame
+     :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
+
+    (set-face-attribute
+     'tab-bar-tab-group-current frame
+     :box `(:line-width 3 :color ,bg-tab-inactive :style nil))))
 
 (defun vim-tab-bar--run-after-load-theme-hook (&rest _args)
   "Run `vim-tab-bar--apply' after `load-theme'."
@@ -349,9 +353,13 @@ visual consistency with the currently active theme's color scheme."
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
-        (when (daemonp)
-          (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply))
-        (vim-tab-bar--apply)
+        (if (daemonp)
+            (progn
+              (add-hook 'server-after-make-frame-hook #'vim-tab-bar--apply)
+              ;; Check if we are currently in an active client
+              (when (frame-parameter nil 'client)
+                (vim-tab-bar--apply)))
+          (vim-tab-bar--apply))
         (advice-add 'load-theme :after #'vim-tab-bar--run-after-load-theme-hook)
         (tab-bar-mode 1))
     (advice-remove 'load-theme #'vim-tab-bar--run-after-load-theme-hook)
