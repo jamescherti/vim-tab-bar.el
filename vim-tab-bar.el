@@ -184,7 +184,8 @@ ungrouped tabs."
         (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
 
       (if (display-graphic-p)
-          (setq tab-bar-separator "\u200B")  ; Zero width space to fix color bleeding
+          ;; Zero width space to fix color bleeding
+          (setq tab-bar-separator "\u200B")
         (setq tab-bar-separator ""))
 
       (setq tab-bar-auto-width nil)
