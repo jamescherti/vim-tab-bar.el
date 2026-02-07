@@ -183,10 +183,29 @@ ungrouped tabs."
       (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
         (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
 
+      ;; Using the zero-width space (\u200B) prevents background color bleeding
+      ;; between tabs in graphical frames, ensuring a clean visual interface.
+      ;;
+      ;; While this character is rendered as a highlighted "unprintable" glyph
+      ;; in terminal mode, this trade-off is accepted because preserving the
+      ;; visual integrity of the GUI is more important than the highlighting
+      ;; artifact in the terminal.
+      ;;
+      ;; Consequently, the separator is only cleared when no graphical frames
+      ;; exist in the current session.
       (if (display-graphic-p)
-          ;; Zero width space to fix color bleeding
+          ;; Use the zero-width space \u200B as a separator, you ensure that
+          ;; graphical frames maintain distinct, clean boundaries between tabs
+          ;; rather than suffering from background color leakage.
           (setq tab-bar-separator "\u200B")
-        (setq tab-bar-separator ""))
+        (if (seq-some #'display-graphic-p (frame-list))
+            ;; Use the zero-width space \u200B as a separator, you ensure that
+            ;; graphical frames maintain distinct, clean boundaries between tabs
+            ;; rather than suffering from background color leakage.
+            (setq tab-bar-separator "\u200B")
+          ;; Revert to an empty string when there no graphical frames are
+          ;; present.
+          (setq tab-bar-separator "")))
 
       (setq tab-bar-auto-width nil)
 
