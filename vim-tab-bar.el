@@ -349,9 +349,7 @@ ungrouped tabs."
 
 (defun vim-tab-bar--server-after-make-frame-hook ()
   "Apply config and remove the function from `server-after-make-frame-hook'."
-  (vim-tab-bar--apply)
-  (remove-hook 'server-after-make-frame-hook
-               #'vim-tab-bar--server-after-make-frame-hook))
+  (vim-tab-bar--apply))
 
 ;;;###autoload
 (define-minor-mode vim-tab-bar-mode
