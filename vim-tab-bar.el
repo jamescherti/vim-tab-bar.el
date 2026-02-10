@@ -334,10 +334,9 @@ ungrouped tabs."
                         :strike-through 'unspecified
                         :stipple 'unspecified)
 
-    ;; Fix: entered--Lisp error: (error "Invalid face box" :line-width 3 :color
-    ;; unspecified :style nil)
-    (when (or (not (daemonp))
-              (and frame (display-graphic-p frame)))
+    ;; The condition (display-graphic-p frame) fixes: entered--Lisp error:
+    ;; (error "Invalid face box" :line-width 3 :color unspecified :style nil)
+    (when (display-graphic-p frame)
       (set-face-attribute
        'tab-bar frame
        :box `(:line-width 3 :color ,bg-tab-inactive :style nil))
