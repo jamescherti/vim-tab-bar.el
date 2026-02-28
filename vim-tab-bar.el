@@ -51,7 +51,6 @@
 ;;; Code:
 
 (require 'tab-bar)
-(require 'cl-lib)
 
 (defgroup vim-tab-bar nil
   "Non-nil if vim-tab-bar mode mode is enabled."
@@ -180,45 +179,43 @@ ungrouped tabs."
          (fg-tab-inactive fg-modeline-inactive)
          (fg-tab-active fg-default)
          (bg-tab-active bg-default))
-    (cl-letf (((symbol-function 'force-mode-line-update)
-               (lambda (&rest _) nil)))
-      (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
-        (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
+    (with-suppressed-warnings ((obsolete tab-bar-new-button-show))
+      (setq tab-bar-new-button-show nil))  ; Obsolete as of Emacs 28.1
 
-      ;; Using the zero-width space (\u200B) prevents background color bleeding
-      ;; between tabs in graphical frames, ensuring a clean visual interface.
-      ;;
-      ;; While this character is rendered as a highlighted "unprintable" glyph
-      ;; in terminal mode, this trade-off is accepted because preserving the
-      ;; visual integrity of the GUI is more important than the highlighting
-      ;; artifact in the terminal.
-      ;;
-      ;; Consequently, the separator is only cleared when no graphical frames
-      ;; exist in the current session.
-      (if (display-graphic-p)
+    ;; Using the zero-width space (\u200B) prevents background color bleeding
+    ;; between tabs in graphical frames, ensuring a clean visual interface.
+    ;;
+    ;; While this character is rendered as a highlighted "unprintable" glyph
+    ;; in terminal mode, this trade-off is accepted because preserving the
+    ;; visual integrity of the GUI is more important than the highlighting
+    ;; artifact in the terminal.
+    ;;
+    ;; Consequently, the separator is only cleared when no graphical frames
+    ;; exist in the current session.
+    (if (display-graphic-p)
+        ;; Use the zero-width space \u200B as a separator, you ensure that
+        ;; graphical frames maintain distinct, clean boundaries between tabs
+        ;; rather than suffering from background color leakage.
+        (setq tab-bar-separator "\u200B")
+      (if (seq-some #'display-graphic-p (frame-list))
           ;; Use the zero-width space \u200B as a separator, you ensure that
           ;; graphical frames maintain distinct, clean boundaries between tabs
           ;; rather than suffering from background color leakage.
           (setq tab-bar-separator "\u200B")
-        (if (seq-some #'display-graphic-p (frame-list))
-            ;; Use the zero-width space \u200B as a separator, you ensure that
-            ;; graphical frames maintain distinct, clean boundaries between tabs
-            ;; rather than suffering from background color leakage.
-            (setq tab-bar-separator "\u200B")
-          ;; Revert to an empty string when there no graphical frames are
-          ;; present.
-          (setq tab-bar-separator "")))
+        ;; Revert to an empty string when there no graphical frames are
+        ;; present.
+        (setq tab-bar-separator "")))
 
-      (setq tab-bar-auto-width nil)
+    (setq tab-bar-auto-width nil)
 
-      ;; Using setq in these defcustom. These have :set function, but
-      ;; tab-bar-format will call the same.
-      (setq tab-bar-tab-hints nil)  ; Tab numbers on the left
-      (setq tab-bar-close-button-show nil)
-      (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
-      (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
+    ;; Using setq in these defcustom. These have :set function, but
+    ;; tab-bar-format will call the same.
+    (setq tab-bar-tab-hints nil)  ; Tab numbers on the left
+    (setq tab-bar-close-button-show nil)
+    (setq tab-bar-tab-name-format-function #'vim-tab-bar--name-format-function)
+    (setq tab-bar-tab-group-format-function #'vim-tab-bar--group-format-function)
 
-      (vim-tab-bar--apply-tab-bar-show-groups vim-tab-bar-show-groups))
+    (vim-tab-bar--apply-tab-bar-show-groups vim-tab-bar-show-groups)
 
     ;; Ensure that any changes to user options that affect the mode line or UI,
     ;; such as tab-bar formatting and appearance, are immediately reflected by
