@@ -37,7 +37,6 @@
 ;; Installation:
 ;; -------------
 ;; (use-package vim-tab-bar
-;;   :ensure t
 ;;   :commands vim-tab-bar-mode
 ;;   :hook
 ;;   (after-init . vim-tab-bar-mode))
