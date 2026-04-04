@@ -46,7 +46,6 @@
 ;; - vim-tab-bar.el @GitHub (Screenshots, usage, etc.):
 ;;   https://github.com/jamescherti/vim-tab-bar.el
 
-
 ;;; Code:
 
 (require 'tab-bar)
