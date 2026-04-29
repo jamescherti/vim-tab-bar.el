@@ -372,7 +372,6 @@ ungrouped tabs."
 This styles the tab-bar to emulate Vim's tabbed interface while maintaining
 visual consistency with the currently active theme's color scheme."
   :global t
-  :lighter " VimTB"
   :group 'vim-tab-bar
   (if vim-tab-bar-mode
       (progn
