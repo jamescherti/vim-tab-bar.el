@@ -13,7 +13,7 @@ If *vim-tab-bar* enhances your workflow, please show your support by **⭐ starr
 
 ![](https://raw.githubusercontent.com/jamescherti/vim-tab-bar.el/main/.screenshots/emacs-tab-like-vim.png)
 
-*For users unfamiliar with [Emacs’ built-in tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* allows users to manage multiple independent workspaces, each comprising its own set of window layouts. This goes beyond simply organizing tabs for different tasks or projects; it enables users to switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It is similar to how web browsers or other editors use tabs, but offers far greater control over workspace organization and layout.*
+*For users unfamiliar with [Emacs' built-in tab-bar](https://www.gnu.org/software/emacs/manual/html_node/emacs/Tab-Bars.html):* Emacs' *tab-bar* allows users to manage multiple independent workspaces, each comprising its own set of window layouts. This goes beyond simply organizing tabs for different tasks or projects; it enables users to switch between distinct contexts, such as coding, reading documentation, or managing emails, without losing track of their previous work. *It is similar to how web browsers or other editors use tabs, but offers far greater control over workspace organization and layout.*
 
 ## Table of Contents
 
@@ -50,7 +50,7 @@ To install *vim-tab-bar* from MELPA:
 
 ## Usage
 
-The default keybindings for Emacs’s built-in tab-bar are as follows:
+The default keybindings for Emacs's built-in tab-bar are as follows:
 
 * `C-x t 2`: Create a new tab (`tab-bar-new-tab` / `tab-new`)
 * `C-x t b RET`: Switch to a buffer in a new tab (`switch-to-buffer-other-tab`)
@@ -109,7 +109,7 @@ You should have received a copy of the GNU General Public License along with thi
 ## Links
 
 - [vim-tab-bar.el @GitHub](https://github.com/jamescherti/vim-tab-bar.el)
-- [Article: Making the Emacs built-in tab-bar Look Like Vim’s Tab Bar](https://www.jamescherti.com/emacs-tab-bar-vim-style-colors/)
+- [Article: Making the Emacs built-in tab-bar Look Like Vim's Tab Bar](https://www.jamescherti.com/emacs-tab-bar-vim-style-colors/)
 -  [tomorrow-night-deepblue-theme.el](https://github.com/jamescherti/tomorrow-night-deepblue-theme.el): a beautiful deep blue variant of the Tomorrow Night theme, which is renowned for its elegant color palette that is pleasing to the eyes.
 
 Other Emacs packages by the same author:
