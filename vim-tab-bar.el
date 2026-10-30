@@ -151,6 +151,8 @@ the current group."
    'face (if current-p 'tab-bar-tab-group-current
            'tab-bar-tab-group-inactive)))
 
+(defvar tab-bar-auto-width)
+
 (defun vim-tab-bar--apply (&optional frame)
   "Apply Vim-like color themes to Emacs tab bars.
 
