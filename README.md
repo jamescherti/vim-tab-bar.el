@@ -1,5 +1,5 @@
 # vim-tab-bar.el - A Vim-Inspired Emacs Tab-Bar That Automatically Adapts to Any Theme
-![Build Status](https://github.com/jamescherti/vim-tab-bar.el/actions/workflows/melpazoid.yml/badge.svg)
+![Build Status](https://github.com/jamescherti/vim-tab-bar.el/actions/workflows/ci.yml/badge.svg)
 [![MELPA](https://melpa.org/packages/vim-tab-bar-badge.svg)](https://melpa.org/#/vim-tab-bar)
 [![MELPA Stable](https://stable.melpa.org/packages/vim-tab-bar-badge.svg)](https://stable.melpa.org/#/vim-tab-bar)
 ![License](https://img.shields.io/github/license/jamescherti/vim-tab-bar.el)
