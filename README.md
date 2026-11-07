@@ -6,7 +6,7 @@
 ![](https://jamescherti.com/misc/made-for-gnu-emacs.svg)
 
 - Author: James Cherti <[https://www.jamescherti.com/](https://www.jamescherti.com/)>
-- License: GPL
+- License: GPL 3.0 or later
 
 The **[vim-tab-bar](https://github.com/jamescherti/vim-tab-bar.el)** package makes Emacs's built-in tab bar look like Vim's tab bar.
 
